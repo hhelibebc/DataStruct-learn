@@ -19,7 +19,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -52,7 +53,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -81,13 +82,19 @@
     <ClInclude Include="common\queue.h" />
     <ClInclude Include="common\stack.h" />
     <ClInclude Include="common\stdafx.h" />
-    <ClInclude Include="common\targetver.h" />
+    <ClInclude Include="common\tree.h" />
+    <ClInclude Include="display\core.h" />
+    <ClInclude Include="display\gui.h" />
+    <ClInclude Include="display\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="common\list.cpp" />
     <ClCompile Include="common\queue.cpp" />
     <ClCompile Include="common\stack.cpp" />
     <ClCompile Include="common\stdafx.cpp" />
+    <ClCompile Include="common\tree.cpp" />
+    <ClCompile Include="display\core.cpp" />
+    <ClCompile Include="display\gui.cpp" />
     <ClCompile Include="leetcode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

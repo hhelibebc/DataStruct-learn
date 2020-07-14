@@ -7,7 +7,7 @@ public:
 	Queue():allowOverlap(false){}
 	bool IsFull();
 	bool IsEmpty();
-	int Length();
+	int GetLength();
 	void Push(BaseData* elem);
 	BaseData Pop();
 	void Print();
@@ -26,7 +26,7 @@ public:
 	LoopQueue();
 	bool IsFull();
 	bool IsEmpty();
-	int Length();
+	int GetLength();
 	void Push(BaseData* elem);
 	BaseData Pop();
 	void Print();

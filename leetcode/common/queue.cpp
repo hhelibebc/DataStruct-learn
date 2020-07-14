@@ -2,17 +2,17 @@
 #include "queue.h"
 
 bool Queue::IsFull(){
-	return (data.Length() >= data.Size());
+	return (data.GetLength() >= data.Size());
 }
 bool Queue::IsEmpty(){
-	return (data.Length() <= 0);
+	return (data.GetLength() <= 0);
 }
-int Queue::Length(){
-	return data.Length();
+int Queue::GetLength(){
+	return data.GetLength();
 }
 void Queue::Push(BaseData* elem){
 	assert(!IsFull() || allowOverlap);
-	data.Insert(elem,data.Length());
+	data.Insert(elem,data.GetLength());
 }
 BaseData Queue::Pop(){
 	assert(!IsEmpty());
@@ -21,7 +21,7 @@ BaseData Queue::Pop(){
 	return tmp;
 }
 void Queue::Print(){
-	data.Print();
+	pc.Print(&data);
 }
 
 void Deque::rPush(BaseData* elem){
@@ -30,8 +30,8 @@ void Deque::rPush(BaseData* elem){
 }
 BaseData Deque::rPop(){
 	assert(!IsEmpty());
-	BaseData tmp = data[data.Length()-1];
-	data.Delete(data.Length()-1);
+	BaseData tmp = data[data.GetLength()-1];
+	data.Delete(data.GetLength()-1);
 	return tmp;
 }
 
@@ -40,12 +40,12 @@ LoopQueue::LoopQueue(){
 	data.SetLength(data.Size()-1);
 }
 bool LoopQueue::IsFull(){
-	return (Length() == data.Size()-1);
+	return (GetLength() == data.Size()-1);
 }
 bool LoopQueue::IsEmpty(){
-	return (Length() == 0);
+	return (GetLength() == 0);
 }
-int LoopQueue::Length(){
+int LoopQueue::GetLength(){
 	if(head <= rear)
 		return rear-head;
 	else
@@ -69,7 +69,7 @@ BaseData LoopQueue::Pop(){
 void LoopQueue::Print(){
 	int i;
 	if(head > rear){
-		for(i=head;i<=data.Length();i++)
+		for(i=head;i<=data.GetLength();i++)
 			data[i].Print();
 		for(i=0;i<rear;i++)
 			data[i].Print();
@@ -84,36 +84,36 @@ void LoopQueue::Print(){
 void LoopDeque::rPush(BaseData* elem){
 	assert(!IsFull() || allowOverlap);
 	if(IsFull() && --rear == -1)
-		rear = data.Length();
+		rear = data.GetLength();
 	if(--head == -1)
-		head = data.Length();
+		head = data.GetLength();
 	data[head] = *elem;
 }
 BaseData LoopDeque::rPop(){
 	assert(!IsEmpty());
 	if(--rear == -1)
-		rear = data.Length();
+		rear = data.GetLength();
 	BaseData tmp = data[rear];
 	return tmp;
 }
 
 void LinkQueue::Push(BaseData* elem){
-	data.Insert(elem,data.Length());
+	data.Insert(elem,data.GetLength());
 }
 BaseData LinkQueue::Pop(){
-	BaseData tmp = data[0]->data;
+	BaseData tmp = data.GetNode(0)->data;
 	data.Delete(0);
 	return tmp;
 }
 void LinkQueue::Print(){
-	data.Print();
+	pc.Print(&data);
 }
 
 void LinkDeque::Push(BaseData* elem){
-	data.Insert(elem,data.Length());
+	data.Insert(elem,data.GetLength());
 }
 BaseData LinkDeque::Pop(){
-	BaseData tmp = data[0]->data;
+	BaseData tmp = data[0];
 	data.Delete(0);
 	return tmp;
 }
@@ -121,8 +121,8 @@ void LinkDeque::rPush(BaseData* elem){
 	data.Insert(elem,0);
 }
 BaseData LinkDeque::rPop(){
-	BaseData tmp = data[data.Length()-1]->data;
-	data.Delete(data.Length()-1);
+	BaseData tmp = data[data.GetLength()-1];
+	data.Delete(data.GetLength()-1);
 	return tmp;
 }
 void LinkDeque::Print(){

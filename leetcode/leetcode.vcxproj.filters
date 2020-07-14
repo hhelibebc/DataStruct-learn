@@ -24,13 +24,22 @@
     <ClInclude Include="common\stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\targetver.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="common\stack.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="display\core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="display\gui.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="display\Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,6 +57,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="common\queue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\tree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="display\core.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="display\gui.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

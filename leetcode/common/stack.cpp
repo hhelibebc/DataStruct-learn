@@ -2,16 +2,16 @@
 #include "stack.h"
 
 void Stack::Push(BaseData* elem){
-	data.Insert(elem,data.Length());
+	data.Insert(elem,data.GetLength());
 }
 BaseData Stack::Pop(){
 	BaseData tmp = Top();
-	data.Delete(data.Length()-1);
+	data.Delete(data.GetLength()-1);
 	return tmp;
 }
 BaseData& Stack::Top(){
-	return data[data.Length()-1];
+	return data[data.GetLength()-1];
 }
 void Stack::Print(){
-	data.Print();
+	pc.Print(&data);
 }

@@ -51,11 +51,6 @@ BaseData& LinearList::operator[](int idx){
 	assert(idx>=0 && idx<=len);
 	return *(pBase+idx);
 }
-void LinearList::Print(){
-	for(int i=0;i<len;i++)
-		pBase[i].Print();
-	printf("\n");
-}
 
 LinkList::LinkList(){
 	head = rear = new LNode();
@@ -69,22 +64,10 @@ LinkList::~LinkList(){
 		delete tmp;
 	}
 }
-LNode* LinkList::operator[](int idx){
-	assert(idx<=len);
-	LNode* tmp = head->next;
-	while(idx-- > 0){
-		tmp = tmp->next;
-	}
-	return tmp;
+BaseData& LinkList::operator[](int idx){
+	return GetNode(idx)->data;
 }
-void LinkList::Print(){
-	LNode* tmp = head->next;
-	for(int i=0;i<len;i++){
-		tmp->data.Print();
-		tmp = tmp->next;
-	}
-	printf("\n");
-}
+
 void LinkList::Insert(BaseData* elem,int idx){
 	assert(idx>=0 && idx<=len);
 	LNode* tmp = new LNode();
@@ -92,12 +75,12 @@ void LinkList::Insert(BaseData* elem,int idx){
 	LNode* pf;
 	LNode* pb;
 
-	if(0 == idx)
+	if (0 == idx)
 		pf = head;
-	else if(len == idx)
+	else if (len == idx)
 		pf = rear;
 	else
-		pf = this->operator[](idx);
+		pf = GetNode(idx);
 	pb = pf->next;
 
 	pf->next = tmp;
@@ -113,7 +96,7 @@ void LinkList::Delete(int idx){
 	if(0 == idx)
 		pf = head;
 	else
-		pf = this->operator[](idx-1);
+		pf = GetNode(idx-1);
 	pb = pf->next;
 
 	pf->next = pb->next;
@@ -121,6 +104,15 @@ void LinkList::Delete(int idx){
 		rear = pf;
 	delete pb;
 	len--;
+}
+LNode* LinkList::GetNode(int idx)
+{
+	assert(idx <= len);
+	LNode* tmp = head->next;
+	while (idx-- > 0) {
+		tmp = tmp->next;
+	}
+	return tmp;
 }
 
 DLinkList::DLinkList(){
@@ -143,23 +135,8 @@ void DLinkList::Print(){
 	}
 	printf("\n");
 }
-DLNode* DLinkList::operator[](int idx){
-	assert(idx<=len);
-	DLNode* tmp;
-	if(idx <= len/2){
-		tmp = head->next;
-		while(idx-- > 0){
-			tmp = tmp->next;
-		}
-	}
-	else{
-		tmp = rear;
-		idx = len - idx - 1;
-		while(idx-- > 0){
-			tmp = tmp->front;
-		}
-	}
-	return tmp;
+BaseData& DLinkList::operator[](int idx){
+	return GetNode(idx)->data;
 }
 void DLinkList::Insert(BaseData* elem,int idx){
 	assert(idx>=0 && idx<=len);
@@ -173,7 +150,7 @@ void DLinkList::Insert(BaseData* elem,int idx){
 	else if(len == idx)
 		pf = rear;
 	else
-		pf = this->operator[](idx);
+		pf = GetNode(idx);
 	pb = pf->next;
 
 	pf->next = tmp;
@@ -193,7 +170,7 @@ void DLinkList::Delete(int idx){
 	DLNode* pf;
 	DLNode* pb;
 
-	tmp = this->operator[](idx);
+	tmp = GetNode(idx);
 	pf = tmp->front;
 	pb = tmp->next;
 
@@ -204,4 +181,23 @@ void DLinkList::Delete(int idx){
 		rear = pf;
 	delete tmp;
 	len--;
+}
+DLNode* DLinkList::GetNode(int idx)
+{
+	assert(idx <= len);
+	DLNode* tmp;
+	if (idx <= len / 2) {
+		tmp = head->next;
+		while (idx-- > 0) {
+			tmp = tmp->next;
+		}
+	}
+	else {
+		tmp = rear;
+		idx = len - idx - 1;
+		while (idx-- > 0) {
+			tmp = tmp->front;
+		}
+	}
+	return tmp;
 }
