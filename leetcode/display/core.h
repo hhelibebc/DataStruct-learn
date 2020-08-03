@@ -21,7 +21,8 @@ public:
 	HDC hdc;
 	HPEN	pen;
 	HBRUSH	brush;
-	HFONT   font;
+	HFONT   font1;
+	HFONT   font2;
 	RECT rect;
 };
 

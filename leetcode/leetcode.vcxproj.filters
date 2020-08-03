@@ -42,6 +42,9 @@
     <ClInclude Include="display\Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="common\map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="leetcode.cpp">
@@ -66,6 +69,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="display\gui.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\map.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

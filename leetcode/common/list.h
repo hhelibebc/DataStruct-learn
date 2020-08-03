@@ -54,7 +54,6 @@ class DLinkList : public LinearADT {
 public:
 	DLinkList();
 	~DLinkList();
-	void Print();
 	void Insert(BaseData* elem,int idx);
 	void Delete(int idx);
 	DLNode* GetNode(int idx);

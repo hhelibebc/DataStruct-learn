@@ -20,9 +20,6 @@ BaseData Queue::Pop(){
 	data.Delete(0);
 	return tmp;
 }
-void Queue::Print(){
-	pc.Print(&data);
-}
 
 void Deque::rPush(BaseData* elem){
 	assert(!IsFull() || allowOverlap);
@@ -66,19 +63,14 @@ BaseData LoopQueue::Pop(){
 		head = 0;
 	return tmp;
 }
-void LoopQueue::Print(){
-	int i;
-	if(head > rear){
-		for(i=head;i<=data.GetLength();i++)
-			data[i].Print();
-		for(i=0;i<rear;i++)
-			data[i].Print();
-	}
-	else{
-		for(i=head;i<rear;i++)
-			data[i].Print();
-	}
-	printf("\n");
+BaseData& LoopQueue::operator[](int idx)
+{
+	int t = data.Size();
+	assert(idx >= 0 && idx < t - 1);
+	if (idx < t - head)
+		return data[head + idx];
+	else
+		return data[idx - (t - head)];
 }
 
 void LoopDeque::rPush(BaseData* elem){
@@ -105,9 +97,6 @@ BaseData LinkQueue::Pop(){
 	data.Delete(0);
 	return tmp;
 }
-void LinkQueue::Print(){
-	pc.Print(&data);
-}
 
 void LinkDeque::Push(BaseData* elem){
 	data.Insert(elem,data.GetLength());
@@ -125,6 +114,4 @@ BaseData LinkDeque::rPop(){
 	data.Delete(data.GetLength()-1);
 	return tmp;
 }
-void LinkDeque::Print(){
-	data.Print();
-}
+

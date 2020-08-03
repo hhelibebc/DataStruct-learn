@@ -144,3 +144,41 @@ int TTNode::GetChildCnt()
 	else
 		return 0;
 }
+void TTNode::AddChild(BaseData* elem)
+{
+	assert(NULL != elem);
+	TTNode* tmp = new TTNode();
+	tmp->data = *elem;
+	AddChild(tmp);
+}
+void TTNode::AddChild(TTNode* src)
+{
+	if (src->data > data) {
+		if (NULL == right)
+			right = src;
+		else
+			right->AddChild(src);
+	}
+	else {
+		if (NULL == left)
+			left = src;
+		else
+			left->AddChild(src);
+	}
+	if (left->GetDepth() > right->GetDepth() + 1)
+		parent->LeftRotate();
+	else if (right->GetDepth() > left->GetDepth() + 1)
+		parent->RightRotate();
+}
+void TTNode::DelNode()
+{
+}
+void TTNode::LeftRotate()
+{
+}
+void TTNode::RightRotate()
+{
+}
+void TTNode::DoubleRotate()
+{
+}

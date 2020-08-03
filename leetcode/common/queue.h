@@ -10,8 +10,8 @@ public:
 	int GetLength();
 	void Push(BaseData* elem);
 	BaseData Pop();
-	void Print();
 	void SetAllowOverlap(bool flag){allowOverlap = flag;}
+	LinearList* GetData() { return &data; }
 protected:
 	LinearList data;
 	bool allowOverlap;
@@ -21,7 +21,7 @@ public:
 	void rPush(BaseData* elem);
 	BaseData rPop();
 };
-class LoopQueue:public Queue{
+class LoopQueue :public Queue, public LinearADT {
 public:
 	LoopQueue();
 	bool IsFull();
@@ -29,7 +29,7 @@ public:
 	int GetLength();
 	void Push(BaseData* elem);
 	BaseData Pop();
-	void Print();
+	BaseData& operator[](int idx);
 protected:
 	int head;
 	int rear;
@@ -44,7 +44,7 @@ class LinkQueue{
 public:
 	void Push(BaseData* elem);
 	BaseData Pop();
-	void Print();
+	LinkList* GetData() { return &data; }
 private:
 	LinkList data;
 };
@@ -54,7 +54,7 @@ public:
 	BaseData Pop();
 	void rPush(BaseData* elem);
 	BaseData rPop();
-	void Print();
+	DLinkList* GetData() { return &data; }
 private:
 	DLinkList data;
 };

@@ -8,7 +8,7 @@ public:
 	void Push(BaseData* elem);
 	BaseData Pop();
 	BaseData& Top();
-	void Print();
+	LinearList* GetData() { return &data; };
 private:
 	LinearList data;
 };

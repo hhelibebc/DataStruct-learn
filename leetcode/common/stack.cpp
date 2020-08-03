@@ -12,6 +12,3 @@ BaseData Stack::Pop(){
 BaseData& Stack::Top(){
 	return data[data.GetLength()-1];
 }
-void Stack::Print(){
-	pc.Print(&data);
-}

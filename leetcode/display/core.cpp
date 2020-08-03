@@ -15,26 +15,20 @@ static MessageMap cb_tab[]={
 #define CNT	(sizeof(cb_tab)/sizeof(cb_tab[0]))
 
 void CallBack(OnPaint){
-	PAINTSTRUCT ps;
-	if (message == 0) {
-		InvalidateRect(hWnd, &app.rect, 0);
-		app.hdc = BeginPaint(hWnd,&ps);
-		GUIBase* p = (GUIBase*)wParam;
-		if (p != NULL && p->GUID == 0x12345678)
-			p->Print();
-		EndPaint(hWnd,&ps);
-	}
-	else if (message == 1) {
+	if (message == 0)
 		InvalidateRect(hWnd, &app.rect, 1);
-	}
+	else if(message == 0x0f)
+		app.hdc = GetDC(hWnd);
 }
 void CallBack(OnCreate) {
 	GetClientRect(hWnd, &app.rect);
 	LOGFONT lfont;
-	CLEAROBJ(&lfont);
+	CLEAROBJ(lfont);
 	lfont.lfCharSet = GB2312_CHARSET;
 	lfont.lfHeight = 25;
-	app.font = CreateFontIndirect(&lfont);
+	app.font1 = CreateFontIndirect(&lfont);
+	lfont.lfHeight = 15;
+	app.font2 = CreateFontIndirect(&lfont);
 	init();
 }
 void CallBack(OnSize) {

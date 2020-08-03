@@ -1,21 +1,12 @@
 #pragma once
 
-typedef enum{
-	PLR,
-	PRL,
-	LPR,
-	RPL,
-	LRP,
-	RLP,
-	LAYER,
-}ORDER;
-
 class DTNode :public TreeADT {
 public:
 	DTNode():left(NULL),right(NULL){}
 	virtual TreeADT* GetChild(int idx);
 	virtual BaseData& GetChildData(int idx);
 	virtual int GetChildCnt();
+	virtual COLOR GetColor() { return WHITE; }
 	void AddChild(BaseData* elem);
 	void AddChild(DTNode* src);
 	void DelNode();
@@ -31,6 +22,7 @@ public:
 	virtual TreeADT* GetChild(int idx);
 	virtual BaseData& GetChildData(int idx);
 	virtual int GetChildCnt();
+	virtual COLOR GetColor() { return WHITE; }
 	void AddChild(BaseData* elem);
 	void AddBrother(MTNode* elem);
 	void DelNode();
@@ -41,13 +33,21 @@ public:
 };
 class TTNode :public TreeADT {
 public:
-	TTNode():parent(NULL),left(NULL),right(NULL){}
+	TTNode():parent(NULL),left(NULL),right(NULL),color(RED){}
 	virtual TreeADT* GetChild(int idx);
 	virtual BaseData& GetChildData(int idx);
+	virtual COLOR GetColor() { return color; }
 	virtual int GetChildCnt();
+	void AddChild(BaseData* elem);
+	void AddChild(TTNode* elem);
+	void DelNode();
+	void LeftRotate();
+	void RightRotate();
+	void DoubleRotate();
 public:
 	BaseData data;
 	TTNode* parent;
 	TTNode* left;
 	TTNode* right;
+	COLOR color;
 };

@@ -127,14 +127,6 @@ DLinkList::~DLinkList(){
 		delete tmp;
 	}
 }
-void DLinkList::Print(){
-	DLNode* tmp = head->next;
-	for(int i=0;i<len;i++){
-		tmp->data.Print();
-		tmp = tmp->next;
-	}
-	printf("\n");
-}
 BaseData& DLinkList::operator[](int idx){
 	return GetNode(idx)->data;
 }

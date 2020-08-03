@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\list.h" />
+    <ClInclude Include="common\map.h" />
     <ClInclude Include="common\queue.h" />
     <ClInclude Include="common\stack.h" />
     <ClInclude Include="common\stdafx.h" />
@@ -89,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="common\list.cpp" />
+    <ClCompile Include="common\map.cpp" />
     <ClCompile Include="common\queue.cpp" />
     <ClCompile Include="common\stack.cpp" />
     <ClCompile Include="common\stdafx.cpp" />
